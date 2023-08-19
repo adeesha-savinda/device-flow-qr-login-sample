@@ -1,1 +1,0 @@
-export const statuses = ["initial", "auth pending", "authenticated", "error"];

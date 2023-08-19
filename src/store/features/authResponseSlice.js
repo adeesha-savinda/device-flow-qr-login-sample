@@ -1,19 +1,56 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { IDP_DEVICE_AUTH_URL, CLIENT_ID } from '../../config';
+
+export const requestAuth = createAsyncThunk('atuthResponse/requestAuth', async () => {
+    const params = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Accept: 'application/json',
+        },
+        body: `client_id=${CLIENT_ID}`,
+    };
+
+    const response = await fetch(IDP_DEVICE_AUTH_URL, params);
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+
+});
 
 export const authResponseSlice = createSlice({
     name: "authResponse",
     initialState: {
-        value: {}
+        value: {},
+        loading: 'idle',
+        error: null
     },
     reducers: {
         setAuthResponse: (state, action) => {
             state.value = action.payload;
         }
     },
-});
-
-export const requestAuth = createAsyncThunk('atuthResponse/requestAuth', async () => {
-    
+    extraReducers: (builder) => {
+        builder.addCase(requestAuth.pending, (state) => {
+            if (state.loading === 'idle') {
+                state.loading = 'pending'
+            }
+        })
+        builder.addCase(requestAuth.fulfilled, (state, action) => {
+            if (state.loading === 'pending') {
+                state.loading = 'idle';
+                state.value = action.payload;
+            }
+        })
+        builder.addCase(requestAuth.rejected, (state) => {
+            if (state.loading === 'pending') {
+                state.loading = 'idle';
+                state.error = 'Error Occured'
+            }
+        })
+    }
 });
 
 export const { setAuthResponse } = authResponseSlice.actions;

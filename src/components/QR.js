@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getCurrentAuthResponse } from '../store/features/authResponseSlice'
 import QRCode from 'react-qr-code';
 
@@ -9,12 +9,13 @@ const QR = () => {
 
     return (
         <div>
-        {
-            authResponse?.verification_uri_complete?(
-          <div className = "p-10" > 
-          <QRCode value={authResponse.verification_uri_complete} /></div>
-        ) : (<></>)
-        }
+            {
+                authResponse?.verification_uri_complete ?
+                    (
+                        <div className="p-10" >
+                            <QRCode value={authResponse.verification_uri_complete} /></div>
+                    ) : (<></>)
+            }
         </div>
     )
 }

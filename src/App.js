@@ -3,26 +3,9 @@ import './App.css';
 
 import LoginButton from './components/LoginButton';
 import QR from './components/QR';
+import Token from './components/Token';
 
 const App = () => {
-
-  // const initLogin = async () => {
-
-  //   const URL = `${IDP_BASE_URL}${IDP_DEVICE_AUTH_EP}`;
-  //   const PARAMS = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //       Accept: 'application/json',
-  //     },
-  //     body: `client_id=${CLIENT_ID}&scope=openid`,
-  //   };
-
-  //   const response = await fetch(URL, PARAMS);
-  //   const data = await response.json();
-  //   setResponse(data);
-
-  // };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 w-full">
@@ -35,6 +18,7 @@ const App = () => {
         </p>
         <LoginButton />
         <QR />
+        <Token/>
       </div>
     </div>
   )
