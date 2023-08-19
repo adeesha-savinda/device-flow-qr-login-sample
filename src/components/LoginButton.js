@@ -9,7 +9,7 @@ const LoginButton = () => {
 
     const initLogin = async () => {
 
-        const PARAMS = {
+        const params = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -19,7 +19,7 @@ const LoginButton = () => {
         };
 
         try {
-            const response = await fetch(IDP_DEVICE_AUTH_URL, PARAMS);
+            const response = await fetch(IDP_DEVICE_AUTH_URL, params);
             const data = await response.json();
 
             if (data?.device_code) {
