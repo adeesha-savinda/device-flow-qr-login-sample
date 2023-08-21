@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IDP_DEVICE_AUTH_URL, CLIENT_ID } from '../../config';
 
+// Intiate device authorization flow
 export const requestAuth = createAsyncThunk('atuthResponse/requestAuth', async () => {
     const params = {
         method: 'POST',

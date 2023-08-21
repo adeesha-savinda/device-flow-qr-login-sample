@@ -6,20 +6,13 @@ const LoginButton = () => {
     const authResponse = useSelector(getCurrentAuthResponse);
     const dispatch = useDispatch();
 
-    return authResponse?.device_code ? (
+    return (
         <button
-            className="bg-slate-500 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded mt-4"
+            className="hover:bg-slate-300 text-slate-500 font-bold py-2 px-8 rounded mt-4 border-2 border-slate-500"
             onClick={() => dispatch(requestAuth())}>
-            Logout
+            {authResponse?.device_code ? 'Refresh' : 'Login'}
         </button>
-    ) : (
-        <button
-            className="bg-slate-500 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded mt-4"
-            onClick={() => dispatch(requestAuth())}>
-            Login
-        </button>
-    );
-
+    )
 }
 
 export default LoginButton

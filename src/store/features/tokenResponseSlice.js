@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { CLIENT_ID, GRANT_TYPE, IDP_TOKEN_URL } from "../../config";
 
+// Request token from the authorization server
 export const requestToken = createAsyncThunk('tokenResponse/requestToken', async (authResponse) => {
     const formData = new URLSearchParams();
 
@@ -20,8 +21,6 @@ export const requestToken = createAsyncThunk('tokenResponse/requestToken', async
 
     const response = await fetch(IDP_TOKEN_URL, params);
     const data = await response.json();
-
-    console.log(data);
 
     return data;
 
