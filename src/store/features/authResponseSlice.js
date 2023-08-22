@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IDP_DEVICE_AUTH_URL, CLIENT_ID } from '../../config';
 
+const initialState = {
+    value: {},
+    loading: 'idle',
+    error: null
+};
+
 // Intiate device authorization flow
 export const requestAuth = createAsyncThunk('atuthResponse/requestAuth', async () => {
     const params = {
@@ -23,15 +29,12 @@ export const requestAuth = createAsyncThunk('atuthResponse/requestAuth', async (
 
 export const authResponseSlice = createSlice({
     name: "authResponse",
-    initialState: {
-        value: {},
-        loading: 'idle',
-        error: null
-    },
+    initialState: initialState,
     reducers: {
         setAuthResponse: (state, action) => {
             state.value = action.payload;
-        }
+        },
+        resetAuthResponse: () => initialState,
     },
     extraReducers: (builder) => {
         builder.addCase(requestAuth.pending, (state) => {
@@ -54,6 +57,6 @@ export const authResponseSlice = createSlice({
     }
 });
 
-export const { setAuthResponse } = authResponseSlice.actions;
+export const { setAuthResponse, resetAuthResponse } = authResponseSlice.actions;
 export const getCurrentAuthResponse = (state) => state.authResponse.value;
 export default authResponseSlice.reducer;

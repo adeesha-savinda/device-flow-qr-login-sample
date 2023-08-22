@@ -1,6 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { CLIENT_ID, GRANT_TYPE, IDP_TOKEN_URL } from "../../config";
 
+const initialState = {
+    value: {},
+    lastIntervalId: null,
+    latTimeoutId: null,
+    loading: 'idle',
+    error: null
+};
+
 // Request token from the authorization server
 export const requestToken = createAsyncThunk('tokenResponse/requestToken', async (authResponse) => {
     const formData = new URLSearchParams();
@@ -28,21 +36,15 @@ export const requestToken = createAsyncThunk('tokenResponse/requestToken', async
 
 export const tokenResponseSlice = createSlice({
     name: "authResponse",
-    initialState: {
-        value: {},
-        lastIntervalId: null,
-        latTimeoutId: null,
-        loading: 'idle',
-        polling: 'idle',
-        error: null
-    },
+    initialState: initialState,
     reducers: {
         setLastIntervalId: (state, action) => {
             state.lastIntervalId = action.payload;
         },
         setLastTimeoutId: (state, action) => {
             state.setLastTimeoutId = action.payload;
-        }
+        },
+        resetTokenResponse: () => initialState,
     },
     extraReducers: (builder) => {
         builder.addCase(requestToken.pending, (state) => {
@@ -69,5 +71,5 @@ export const getCurrentTokenResponse = (state) => state.tokenResponse.value;
 export const getLastIntervalId = (state) => state.tokenResponse.lastIntervalId;
 export const getLastTimeoutId = (state) => state.tokenResponse.getLastTimeoutId;
 
-export const { setLastIntervalId, setLastTimeoutId } = tokenResponseSlice.actions;
+export const { setLastIntervalId, setLastTimeoutId, resetTokenResponse } = tokenResponseSlice.actions;
 export default tokenResponseSlice.reducer;
