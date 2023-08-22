@@ -1,6 +1,6 @@
 # QR Code Login sample application using Device Authorization grant
 
-This project is a sample implementation of QR code-based authentication using the OAuth 2.0 device authorization grant (RFC 8628).
+This project is a sample implementation of QR code-based authentication using the OAuth 2.0 device authorization grant (RFC 8628). This application is bult using React JS with Redux for state management and tailwindcss for styling.
 
 ## How to Run
 
