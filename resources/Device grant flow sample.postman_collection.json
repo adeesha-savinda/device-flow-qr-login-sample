@@ -20,18 +20,18 @@
 					"urlencoded": [
 						{
 							"key": "client_id",
-							"value": "Jp0PGHmJ424CDVeOScvOcAis1tMa",
+							"value": "<CLIENT_ID>",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "https://localhost:9443/oauth2/device_authorize",
+					"raw": "https://<HOST>:<PORT>/oauth2/device_authorize",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"<HOST>"
 					],
-					"port": "9443",
+					"port": "<PORT>",
 					"path": [
 						"oauth2",
 						"device_authorize"
@@ -60,23 +60,23 @@
 						},
 						{
 							"key": "client_id",
-							"value": "Jp0PGHmJ424CDVeOScvOcAis1tMa",
+							"value": "<CLIENT_ID>",
 							"type": "text"
 						},
 						{
 							"key": "device_code",
-							"value": "94d13911-e587-4c6a-a67a-acb6eedc0fb3",
+							"value": "<DEVICE_CODE COPIED FROM AUTH RESPONSE>",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "https://localhost:9443/oauth2/token",
+					"raw": "https://<HOST>:<PORT>/oauth2/token",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"<HOST>"
 					],
-					"port": "9443",
+					"port": "<PORT>",
 					"path": [
 						"oauth2",
 						"token"
