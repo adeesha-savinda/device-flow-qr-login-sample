@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "50462310-0310-4b57-9668-e10c3789fc37",
+		"name": "Device grant flow sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorize Req",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "Jp0PGHmJ424CDVeOScvOcAis1tMa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/device_authorize",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"device_authorize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Req",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:device_code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "Jp0PGHmJ424CDVeOScvOcAis1tMa",
+							"type": "text"
+						},
+						{
+							"key": "device_code",
+							"value": "94d13911-e587-4c6a-a67a-acb6eedc0fb3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
