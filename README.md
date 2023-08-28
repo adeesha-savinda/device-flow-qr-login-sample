@@ -2,6 +2,8 @@
 
 This project is a sample implementation of QR code-based authentication using the OAuth 2.0 device authorization grant (RFC 8628). This application is bult using React JS with Redux for state management and tailwindcss for styling.
 
+For more infromation please visit the [blog post](https://medium.com/@adeesha-savinda/how-to-implement-qr-code-authentication-login-21a78a3e7418) explaining **How to implement QR-Code Authentication / Login with WSO2 Identity Server**
+
 ## How to Run
 
 ### Configurations
